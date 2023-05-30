@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bai1</title>
+</head>
+
+<body>
+  <script>
+    //1. Thực hiện nhập thông tin 5 sinh viên gồm các thông tin mã sinh viên, tên
+    //sinh viên, tuổi, điểm html, điểm css, điểm javascript lưu trữ trong mảng.
+    let studentArr = [];
+    for (let i = 0;i < 5;i++) {
+      let studentId = +prompt("Nhập mã SV thứ " + (i + 1));
+      while (studentId.length !== 5 || studentId[0] !== 'S') {
+        studentId = prompt("Mã sinh viên không hợp lệ. Vui lòng nhập lại.")
+      }
+      let studentName = prompt("Nhập tên SV thứ " + (i + 1));
+      while (studentName.length < 6 || studentName.length > 30) {
+        studentName = prompt("Tên sinh viên không hợp lệ. Vui lòng nhập lại.");
+      }
+      let age = +(prompt("Nhập tuổi SV thứ " + (i + 1)));
+      while (isNaN(age) || age < 18 || age > 30) {
+        age = +(prompt("Tuổi sinh viên không hợp lệ. Vui lòng nhập lại."));
+      }
+      let mark_html = +(prompt("Nhập điểm HTML của sinh viên thứ " + (i + 1)));
+      while (isNaN(mark_html) || mark_html < 0 || mark_html > 10) {
+        mark_html = +(prompt("Điểm HTML đã nhập không hợp lệ. Vui lòng nhập số điểm từ 0-10"));
+      }
+      let mark_css = +(prompt("Nhập điểm CSS của sinh viên thứ " + (i + 1)));
+      while (isNaN(mark_css) || mark_css < 0 || mark_css > 10) {
+        mark_css = +(prompt("Điểm CSS đã nhập không hợp lệ. Vui lòng nhập số điểm từ 0-10"));
+      }
+      let mark_js = +(prompt("Nhập điểm js của sinh viên thứ " + (i + 1)));
+      while (isNaN(mark_js) || mark_js < 0 || mark_js > 10) {
+        mark_js = +(prompt("Điểm js đã nhập không hợp lệ. Vui lòng nhập số điểm từ 0-10"));
+      }
+
+      //2.Thực hiện tính điểm trung bình và tính xếp loại:
+      let avgMark = (mark_html + mark_css + mark_js) / 3;
+      let rank = "";
+      if (avgMark < 5) {
+        rank = "Yếu";
+      } else if (avgMark < 7) {
+        rank = "Trung bình";
+      } else if (avgMark < 8) {
+        rank = "Khá";
+      } else if (avgMark < 9) {
+        rank = "Giỏi";
+      } else {
+        rank = "Xuất sắc";
+      }
+
+      // Lưu trữ thông tin sinh viên vào mảng:
+      studentArr.push([studentId, studentName, age, mark_html, mark_css, mark_js, avgMark, rank]);
+    }
+    console.log(studentArr);
+
+    // 3. Sắp xếp sinh viên theo điểm trung bình tăng dần và in ra kết quả sau khi sắp xếp:
+    let avgMark_sort = [];
+    avgMark_sort.sort();
+    console.log(avgMark_sort);
+
+    //4. Tìm sinh viên theo tên:
+    let searchName = "";
+    let foundStudentName = [];
+    for (let i = 0;i < studentArr.length;i++) {
+      let studentName = studentArr[i][1];
+      if (studentName.includes(searchName)) {
+        foundStudents.push(studentArr[i]);
+      }
+    }
+
+  </script>
+</body>
+
+</html>
